@@ -1,7 +1,7 @@
 import os
 from transformers import BertTokenizer, BertForSequenceClassification, TrainingArguments
 from datasets import load_from_disk
-from mixup import MixupTrainer
+from src.mixup import MixupTrainer
 
 def tokenize(batch):
     """
