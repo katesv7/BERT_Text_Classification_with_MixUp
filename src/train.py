@@ -3,6 +3,7 @@ from transformers import BertTokenizer, BertForSequenceClassification, TrainingA
 from datasets import load_from_disk
 from src.mixup import MixupTrainer
 
+
 def tokenize(batch):
     """
     Токенизация данных.
@@ -14,6 +15,7 @@ def tokenize(batch):
         dict: Токенизированные данные
     """
     return tokenizer(batch['clean_text'], padding='max_length', truncation=True, max_length=512)
+
 
 def train_model(batch_size: int, epochs: int) -> None:
     """
