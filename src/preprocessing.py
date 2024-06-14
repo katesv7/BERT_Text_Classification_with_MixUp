@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from datasets import load_dataset, Dataset
 
+
 def preprocess_text(text: str) -> str:
     """
     Предобработка текста: приведение к нижнему регистру, удаление пунктуации, лемматизация и удаление стоп-слов.
@@ -23,6 +24,7 @@ def preprocess_text(text: str) -> str:
     tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
     clean_text = ' '.join(tokens)
     return clean_text
+
 
 def preprocess_data() -> None:
     """
