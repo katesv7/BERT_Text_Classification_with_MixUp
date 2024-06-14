@@ -2,6 +2,7 @@ import os
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
 from datasets import load_from_disk
 
+
 def tokenize(batch):
     """
     Токенизация данных.
@@ -13,6 +14,7 @@ def tokenize(batch):
         dict: Токенизированные данные
     """
     return tokenizer(batch['clean_text'], padding='max_length', truncation=True, max_length=512)
+
 
 def evaluate_model() -> None:
     """
