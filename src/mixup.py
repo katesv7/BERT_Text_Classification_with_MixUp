@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from transformers import Trainer, BertTokenizer, BertForSequenceClassification
 from datasets import load_from_disk
 
+
 def mixup_embeddings(embeddings, labels, alpha=0.2):
     """
     Реализация MixUp для эмбеддингов.
@@ -23,6 +24,7 @@ def mixup_embeddings(embeddings, labels, alpha=0.2):
     labels_a, labels_b = labels, labels[index]
     return mixed_embeddings, labels_a, labels_b, lam
 
+
 def mixup_criterion(criterion, pred, y_a, y_b, lam):
     """
     Критерий для MixUp.
@@ -38,6 +40,7 @@ def mixup_criterion(criterion, pred, y_a, y_b, lam):
         float: Значение потерь
     """
     return lam * criterion(pred, y_a) + (1 - lam) * criterion(pred, y_b)
+
 
 class MixupTrainer(Trainer):
     """
@@ -57,6 +60,7 @@ class MixupTrainer(Trainer):
         loss = mixup_criterion(F.cross_entropy, logits, labels_a, labels_b, lam)
 
         return (loss, outputs) if return_outputs else loss
+
 
 def main() -> None:
     """
