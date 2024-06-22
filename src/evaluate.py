@@ -19,7 +19,6 @@ def tokenize(batch):
 def evaluate_model() -> None:
     """
     Функция для оценки модели.
-    Результат выводится на экран.
     """
     global tokenizer
     # Загрузка токенизатора и модели
